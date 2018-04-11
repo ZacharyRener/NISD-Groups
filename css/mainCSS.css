@@ -1,0 +1,236 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#about, #aboutByCampus{color:white;} /** WHITE BORDERS */
+
+.ui-input-search{
+	color:white !important;
+}
+
+/*
+.search-input{
+	
+}
+*/
+
+.ui-footer{
+	border-bottom:none !important;
+}
+
+#home, #homeByCampus{
+	background:rgba(000, 20, 39, .5) !important;
+}
+#home .ui-state-persist, #homeByCampus .ui-state-persist{border-left:none;}
+#sortByText{color:white;}
+#keyContacts , #keyContactsByCampus, #principles, #principlesByCampus, #allPrinciples, #allPrinciplesByCampus, #elemPrinciples, #elemPrinciplesByCampus, #midPrinciples, #midPrinciplesByCampus, #highPrinciples, #highPrinciplesByCampus, #allContacts, #about, #aboutByCampus #allContacts, #home, #homeByCampus{
+	background:rgba(000, 20, 39, .5) !important; 
+	color:white !important; /** WHITE BORDERS */
+}
+#homeContent-footer,#homeByCampusContent-footer{
+	color:white;
+	padding-bottom:10%;
+}
+.home-about-div{
+	text-align:center;
+	padding:5%;
+	
+}
+
+.home-about-arrow{
+	width:26px;
+	
+}
+
+
+
+.home-about-div{margin-top:2%;margin-bottom:-10%;}
+
+.ui-block-a{
+	width:120px;
+	color:white;
+}
+.ui-block-b{
+	width:120px;
+	color:white;
+}
+.ui-block-c{
+	width:120px;
+}
+.ui-grid-b{
+	text-align:center;
+	/*margin-right:56px;**/
+	
+}
+
+.ui-grid-b ul{
+	
+	display:inline-table;
+	padding-right:56px;
+}
+.ui-grid-b li{
+	
+	display:inline;	
+}
+/*
+.ui-header{
+	
+	
+}
+*/
+.ui-navbar:not(.ui-state-persist){
+	
+	
+}
+.ui-page .ui-header img{
+	margin-left:60px;
+	margin-right:50px;
+	padding:08px;
+	
+}
+
+.nav-inactive{
+	background:rgba(255, 255, 255, .5);
+	color:black !important;
+	border-top:1px solid white !important; /** WHITE BORDERS */
+	border-left:1px solid white !important; /** WHITE BORDERS */
+	border-bottom:1px solid white;
+	
+}
+
+#home .ui-state-persist{border-left:none;}
+#about .ui-state-persist{
+	border-left:1px solid white !important; /** WHITE BORDERS */
+}
+#aboutByCampus .ui-state-persist{
+	border-left:1px solid white !important; /** WHITE BORDERS */
+}.border-right{border-right:1px solid white !important;} /** WHITE BORDERS */
+.ui-btn{
+	
+	color:white;
+}
+.ui-icon-whitebullets {
+	background-image: url("../images/gridIcon.png");
+	background-size: 28px 17.5px;
+	width:28px !important;
+	height:17.5px !important;
+	background-color: transparent;
+	box-shadow: none;
+	-moz-border-radius: 0px !important;
+    -webkit-border-radius:0px !important;
+    border-radius:0px !important;
+	margin-top: 18px !important;
+	margin-left: 12px !important;
+	margin-right: 25px !important;
+}
+
+.transparentButton {
+    background-color: transparent !important;
+    border: 0 !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.home{
+	width:100px !important;
+	
+}
+.homeOver{
+	background-color:#801427;
+}
+.panel01{
+	background-color:#202025;
+	
+	border-left:0px;
+}
+#pincode-input1{
+	width:10px;
+}
+.col-md-12{
+	    margin-right:10px;;
+}
+.sortByImage{
+	position:absolute;
+	z-index:0;
+}
+#sortByText{
+	position:absolute;
+	z-index:1;
+}
+.ui-page { backface-visibility: hidden !important;
+           -webkit-backface-visibility: hidden; /* Chrome and Safari */
+           -moz-backface-visibility: hidden /* Firefox */ !important; } 
+#btnGo{
+	height:20em;
+}
+#containsBoolean{
+	text-indent: -9999px;
+}
+.loginBtn{
+	background-color:#801427;
+	padding: 10px 0px;
+	margin:2px;
+	border:2px solid;
+	border-radius:5px;
+	
+}
+.panelListView{
+	background-color:#202025;
+	color: white;
+}
+
+#loginPageContent{
+	padding:10%;
+}.imgcontainer2{
+	padding:5%;text-align:center;
+}
+.header_logo{
+	height:57px !important;
+}
+.ui-state-persist{
+	border-top:1px solid white !important;
+}
+
+
+
+
+
+
+.h3-author{
+	color:white;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-weight:100;
+	text-align:center;
+	margin-top:-07%;
+	font-size:1.4em;
+	margin-left:20%;;
+}
+.h2-quote{
+	
+	color:white;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-weight:100;
+	text-align:center;
+	font-style:italic;
+	padding:10%;
+	font-size:1.5em;
+	margin-bottom:0px;
+}
+.h1-welcome{color:white;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-weight:100;
+	text-align:center;
+	margin-top:09%;
+}
+.home-about-div h2{
+	font-size:1.5em;
+	color:white;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-weight:100;
+	text-align:center;
+	margin-top:0%;
+	text-transform: uppercase;
+}
+
+
+

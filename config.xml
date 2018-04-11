@@ -1,7 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "app.zacharyrener.nisdgroups"
+    version     = "1.5.1" >
 
-<widget xmlns   = "http://www.w3.org/ns/widgets">
 
-	<name>NISD Groups</name>
+
+  <name>NISD Groups Beta</name>
+
+  <description>
+      An app for access to Northwest ISD Contacts. 
+  </description>
+
+  <author href="http://www.zacharyrener.com" email="me@zacharyrener.com">
+      Zachary Rener
+  </author>
+	<plugin name="cordova-plugin-whitelist" spec="1" />
+	
+    <access origin="*" />
+	<allow-intent href="*" />
+	<allow-navigation href="*" />
+	<allow-intent href="tel:*" />
+	<allow-intent href="sms:*" />
+	<allow-intent href="mailto:*" />
+	<allow-intent href="geo:*" />
+	<platform name="android">
+		<allow-intent href="market:*" />
+	</platform>
+	<platform name="ios">
+		<allow-intent href="itms:*" />
+		<allow-intent href="itms-apps:*" />
+	</platform>
+	
+	
+	
+<platform name="ios">
+  <!-- iOS 8.0+ -->
+  <!-- iPhone 6 Plus  -->
+  <icon src="./images/icon-60@3x.png" width="180" height="180" />
+  <!-- iOS 7.0+ -->
+  <!-- iPhone / iPod Touch  -->
+  <icon src="./images/icon-60.png" width="60" height="60" />
+  <icon src="./images/icon-60@2x.png" width="120" height="120" />
+  <!-- iPad -->
+  <icon src="./images/icon-76.png" width="76" height="76" />
+  <icon src="./images/icon-76@2x.png" width="152" height="152" />
+  <!-- iOS 6.1 -->
+  <!-- Spotlight Icon -->
+  <icon src="./images/icon-40.png" width="40" height="40" />
+  <icon src="./images/icon-40@2x.png" width="80" height="80" />
+
+  <!-- iPad -->
+  <icon src="./images/icon-72.png" width="72" height="72" />
+  <icon src="./images/icon-72@2x.png" width="144" height="144" />
+  <!-- iPhone Spotlight and Settings Icon -->
+  <icon src="./images/icon-small.png" width="29" height="29" />
+  <icon src="./images/icon-small@2x.png" width="58" height="58" />
+
+</platform>
+	
+ <icon src="./images/icon-60@2x.png"/>
+	
 
 </widget>

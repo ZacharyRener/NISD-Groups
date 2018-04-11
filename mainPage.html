@@ -1,0 +1,529 @@
+<!doctype html>
+<html>
+<head>
+
+
+	<meta name="NISD Groups">
+	<meta content="An app for easy access to key and principle Northwest ISD contacts.">
+	<meta charset="utf-8">
+	
+	<style>
+		background: url("/images/eaton-crop-dark.png"); /** DEFAULT OFFLINE BACKGROUND IMAGE */
+	</style>
+	
+	<link href="http://admin.zacharyrener.com/css/dynamic.php" type="text/css" rel="stylesheet"> 
+	
+	<link rel="stylesheet" href="./css/mainCSS.css">
+	
+	<title>NISD Groups</title>
+
+	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--  	<link rel="stylesheet" href="./css/themeRoller2.css">-->
+  	
+	<script src="./jq/jquery-1.11.1.js"></script>
+	<link rel="stylesheet" href="./jq/jquery.mobile-1.4.5.css">
+	
+	<script src="./jq/pageTransitions.js"></script>
+	<script src="./jq/optimizations.js"></script>
+	
+	<script src="./jq/jquery.mobile-1.4.5.js"></script>
+  	<link rel="stylesheet" href="./css/jquery.mobile.icons.min.css" />
+  	
+  	<script src="./jq/jsDial.js"></script>
+	<script src="./jq/jsFunctionality.js"></script>
+	
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-pincode-input.css" rel="stylesheet">
+	<script type="text/javascript" src="./jq/bootstrap-pincode-input.js"></script>
+	<script type="text/javascript" src="./jq/pincodeScript.js"></script>
+	<script type="text/javascript" src="./jq/injecting.js"></script>
+	<!-- <script src="http://admin.zacharyrener.com/js/dynamic_js.php"></script> -->
+	<script>
+    	$.support.cors=true;
+		
+	</script>
+	
+	<style type="text/css">
+	
+body, html {
+    height: 100%;
+}	
+
+		
+
+.ui-page {
+    background: transparent !important;
+}
+.ui-content{
+    background: transparent !important;
+}
+		
+	</style>
+	
+</head>
+
+<body>
+	
+	<!-- All x_content divIDs are JSONP filled through ./js/injecting.js. -->
+	
+	<div  data-role="panel" data-position="left" data-display="push" id="panel-01" class="panel01">
+	<div class="panel_logo"></div>
+		<ul data-role="listview"  class="panelListView" data-theme="e">
+		  <li data-icon="home" ><a href="#home">Home</a></li>
+		  <li data-icon="info" ><a href="#about">About</a></li>
+		</ul>
+	<div id="panel_image"></div>
+	<ul data-role="listview"  class="panelListView" data-theme="e">
+		<li data-icon="lock" ><a onclick="logOut()">Log Out</a></li>
+	</ul>
+	
+	</div> <!-- side panel -->
+	<div data-role="page" id="home" data-position="fixed" data-theme="e" style="background-image: ">
+<div class="headerDiv">  </div> <!-- IMPORTANT -->
+	<div data-role="header"  >
+		
+		<div class="header_logo"></div>
+		
+		<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
+		<!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+		
+		<div  data-role="navbar">
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist" href="#home">Home</a></li>
+				<li><a class="nav-inactive" data-transition="none" href="#keyContacts">Key Contacts</a></li>
+				<li><a class="nav-inactive" href="#principles">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+    
+	<div id="homeContent" data-role="content"></div>
+	
+	<div id="homeContent-footer" data-role="footer" data-position="fixed" >
+		
+		<div class="home-about-div"><a href="#about"><h2><b>About Groups</b></h2></a><hr><a href="#allContacts"><h2><b>View All Contacts</b></h2></a></div>
+		
+	</div>
+	
+</div> <!-- home screen for name sort -->
+	<div data-role="page" id="homeByCampus" data-position="fixed" data-theme="e" >
+<div class="headerDiv">  </div> <!-- IMPORTANT -->
+	<div data-role="header"  >
+		
+		<div class="header_logo"></div>
+		
+		<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
+		<!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+		
+		<div  data-role="navbar">
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist" href="#homeByCampus">Home</a></li>
+				<li><a class="nav-inactive" data-transition="none" href="#keyContactsByCampus">Key Contacts</a></li>
+				<li><a class="nav-inactive" href="#principlesByCampus">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+    
+	<div id="homeByCampusContent" data-role="content"></div>
+	<div id="homeByCampusContent-footer" data-role="footer" data-position="fixed">
+		
+		<div class="home-about-div"><a href="#about"><h2><b>About Groups</b></h2></a><hr><a href="#allContacts"><h2><b>View All Contacts</b></h2></a></div>
+		
+	</div>
+	
+</div> <!-- home screen for name sort -->	
+
+	
+	<!-- Key Contacts for name sort and campus sort -->
+	<div data-role="page" id="keyContacts" data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e"  >
+			<div class="header_logo"></div>
+			<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
+			<div  data-role="navbar">
+				<ul>
+					<li><a class="nav-inactive" href="#home">Home</a></li>
+					<li><a class="ui-btn-active ui-state-persist" href="#keyContacts">Key Contacts</a></li>
+					<li><a class="nav-inactive" href="#principles">Principals</a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="content" id="keyContacts_content" class="ui-grid-b"></div>
+	</div> <!-- key contacts by name -->
+	<div data-role="page" id="keyContactsByCampus" data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e" > 
+   		<div class="header_logo"></div> <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
+    <div  data-role="navbar">
+      <ul>
+        <li><a  class="nav-inactive" href="#homeByCampus">Home</a></li>
+        <li><a class="ui-btn-active ui-state-persist" href="#keyContactsByCampus">Key Contacts</a></li>
+        <li><a class="nav-inactive" href="#principlesByCampus">Principals</a></li>
+      </ul>
+    </div>
+  </div>
+  		<div data-role="content" id="keyContactsByCampus_content" class="ui-grid-b"></div>
+	</div> <!-- key contacts by campus -->
+	
+	<!-- Principals navigation menues for name sort and campus sort. -->
+	<div id="principles" data-role="page" data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+	<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#home">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContacts">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principles">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="content">
+		
+		<div id="sortingMenu">
+		<div id="sortByText"><b>Sort by</b></div><br>
+		<div  data-role="navbar">
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist">Name</a></li>
+				<li><a class="nav-inactive border-right" href="#principlesByCampus">Campus</a></li>
+			</ul>
+		</div>
+		</div>
+		<br><br>
+		<ul class="principalNav" data-role="listview" data-theme="e">
+			<li><a data-transition="slide" href="#elemPrinciples">Elementary School</a></li>
+            <li><a data-transition="slide" href="#midPrinciples">Middle School</a></li>
+            <li><a data-transition="slide" href="#highPrinciples">High School</a></li>
+            <li><a data-transition="slide" href="#allPrinciples">Other/All</a></li>
+			
+		</ul>
+		<br><br>
+		
+		
+	</div>
+	
+</div> <!-- principals nav screen -->
+	<div id="principlesByCampus" data-role="page" data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+	<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#homeByCampus">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContactsByCampus">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principlesByCampus">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="content">
+		
+		<div id="sortingMenu">
+		<div id="sortByText"><b>Sort by</b></div><br>
+		<div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#principles">Name</a></li>
+				<li><a class="ui-btn-active ui-state-persist">Campus</a></li>
+			</ul>
+		</div>
+		</div>
+		<br><br>
+		<ul class="principalNav" data-role="listview" data-theme="e">
+			<li><a data-transition="slide" href="#elemPrinciplesByCampus">Elementary School</a></li>
+            <li><a data-transition="slide" href="#midPrinciplesByCampus">Middle School</a></li>
+            <li><a data-transition="slide" href="#highPrinciplesByCampus">High School</a></li>
+            <li><a data-transition="slide" href="#allPrinciplesByCampus">Other/All</a></li>
+			
+		</ul>
+		<br><br>
+		
+		
+	</div>
+	
+</div> <!-- principals nav screen -->
+	
+	<!-- All/other principals pages for name sort and campus sort. -->
+	<div data-role="page" id="allPrinciples" data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#home">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContacts">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principles">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+		<div data-role="content" id="allPrinciples_content" class="ui-grid-b"></div>
+		<div data-role="footer" data-position="fixed" data-theme="e" data-tap-toggle="false">
+      <div  data-role="navbar" >
+        <ul>
+          <li><a class="ui-btn-active ui-state-persist" href="#elemPrinciples">Elementary</a></li>
+          <li><a class="ui-btn-active ui-state-persist" href="#midPrinciples">Middle</a></li>
+          <li><a class="ui-btn-active ui-state-persist" href="#highPrinciples">High</a></li>
+        </ul>
+      </div>
+    </div>
+	</div> <!-- all principals by name -->
+	<div data-role="page" id="allPrinciplesByCampus" data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e"> <div class="header_logo"></div> <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+    <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+    <div  data-role="navbar">
+      <ul>
+        <li><a class="nav-inactive" href="#homeByCampus">Home</a></li>
+        <li><a class="nav-inactive" href="#keyContactsByCampus">Key Contacts</a></li>
+        <li><a class="ui-btn-active ui-state-persist" href="#principlesByCampus">Principals</a></li>
+      </ul>
+    </div>
+  </div>
+  		<div data-role="content" id="allPrinciplesByCampus_content" class="ui-grid-b"></div>
+  		<div data-role="footer" data-position="fixed" data-theme="e" data-tap-toggle="false">
+      <div  data-role="navbar" >
+        <ul>
+          <li><a class="ui-btn-active ui-state-persist" href="#elemPrinciplesByCampus">Elementary</a></li>
+          <li><a class="ui-btn-active ui-state-persist" href="#midPrinciplesByCampus">Middle</a></li>
+          <li><a class="ui-btn-active ui-state-persist" href="#highPrinciplesByCampus">High</a></li>
+        </ul>
+      </div>
+    </div>
+	</div> <!-- all principals by campus -->
+	
+	<!-- Elementary principals pages for name sort and campus sort. -->
+	<div data-role="page" id="elemPrinciples"data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#home">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContacts">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principles">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+		<div data-role="content" id="elemPrinciples_content" class="ui-grid-b"></div>
+		<div data-role="footer" data-position="fixed" data-theme="e" data-tap-toggle="false" >
+		<div  data-role="navbar" >
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist" href="#elemPrinciples">Elementary</a></li>
+				<li><a class="nav-inactive" href="#midPrinciples">Middle</a></li>
+				<li><a class="nav-inactive" href="#highPrinciples">High</a></li>
+				
+			</ul>
+		</div>
+		
+	</div>
+	</div> <!-- elementary principals by name -->
+	<div data-role="page" id="elemPrinciplesByCampus"data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#homeByCampus">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContactsByCampus">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principlesByCampus">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+		<div data-role="content" id="elemPrinciplesByCampus_content" class="ui-grid-b"></div>
+		<div data-role="footer" data-position="fixed" data-theme="e" data-tap-toggle="false" >
+		<div  data-role="navbar" >
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist" href="#elemPrinciplesByCampus">Elementary</a></li>
+				<li><a class="nav-inactive" href="#midPrinciplesByCampus">Middle</a></li>
+				<li><a class="nav-inactive" href="#highPrinciplesByCampus">High</a></li>
+				
+			</ul>
+		</div>
+		
+	</div>
+	</div> <!-- elementary principals by campus -->
+	
+	<!-- Middle principals pages for name sort and campus sort. -->
+	<div data-role="page" id="midPrinciples"data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#home">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContacts">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principles">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+		<div data-role="content" id="midPrinciples_content" class="ui-grid-b"></div>
+		<div data-role="footer" data-position="fixed" data-theme="e" data-tap-toggle="false">
+		<div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#elemPrinciples">Elementary</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#midPrinciples">Middle</a></li>
+				<li><a class="nav-inactive" href="#highPrinciples">High</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	</div> <!-- middle principals by name -->
+	<div data-role="page" id="midPrinciplesByCampus"data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#homeByCampus">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContactsByCampus">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principlesByCampus">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+		<div data-role="content" id="midPrinciplesByCampus_content" class="ui-grid-b"></div>
+		<div data-role="footer" data-position="fixed" data-theme="e" data-tap-toggle="false">
+		<div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#elemPrinciplesByCampus">Elementary</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#midPrinciplesByCampus">Middle</a></li>
+				<li><a class="nav-inactive" href="#highPrinciplesByCampus">High</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	</div> <!-- middle principals by campus -->
+	
+	<!-- High principals pages for name sort and campus sort. -->
+	<div data-role="page" id="highPrinciples"data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#home">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContacts">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principles">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+		<div data-role="content" id="highPrinciples_content" class="ui-grid-b"></div>
+		<div data-role="footer" data-position="fixed" data-theme="e" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#elemPrinciples">Elementary</a></li>
+				<li><a class="nav-inactive" href="#midPrinciples">Middle</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#highPrinciples">High</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	</div> <!-- high principals by name -->
+	<div data-role="page" id="highPrinciplesByCampus"data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#homeByCampus">Home</a></li>
+				<li><a class="nav-inactive" href="#keyContactsByCampus">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principlesByCampus">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+		<div data-role="content" id="highPrinciplesByCampus_content" class="ui-grid-b"></div>
+		<div data-role="footer" data-position="fixed" data-theme="e" data-tap-toggle="false">
+		<div  data-role="navbar">
+			<ul>
+				<li><a class="nav-inactive" href="#elemPrinciplesByCampus">Elementary</a></li>
+				<li><a class="nav-inactive" href="#midPrinciplesByCampus">Middle</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#highPrinciplesByCampus">High</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	</div> <!-- high principals by campus -->
+	
+	<!-- All contacts page for name sort only. -->
+	<div data-role="page" id="allContacts" data-theme="e" >
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+		<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+        
+           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+           data-iconpos="notext">Grid</a>
+           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+           <div  data-role="navbar">
+			<ul>
+			  <li><a class="nav-inactive" href="#home">Home</a></li>
+			  <li><a class="ui-btn-active ui-state-persist" href="#keyContacts">Key Contacts</a></li>
+				<li><a class="ui-btn-active ui-state-persist" href="#principles">Principals</a></li>
+			</ul>
+		</div>
+	</div>
+		<div data-role="content" id="allContacts_content" class="ui-grid-b"></div>
+		<div data-role="footer" data-position="fixed" >
+		<h4>All Contacts</h4>
+		
+	</div>
+	</div>
+	
+	<!-- About page. -->
+	<div data-role="page" id="about" data-position="fixed" data-theme="e">
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+	<div data-role="header" data-theme="e">
+		<div class="header_logo"></div>
+		<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
+		<!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
+	</div>
+    
+	<div data-role="content">	
+
+
+		<h4 style="padding:5%;"><b>Groups is an application designed for managing and accessing a list of contacts. To get started, navigate to the home page and use the tabs at the top of the screen or press "View all Contacts" at the bottom.</b></h4>
+		<br>
+		<p style="padding:5%;"><b>For help, feel free to contact <a href="mailto:me@zacharyrener.com">me@zacharyrener.com</a></b></p>
+		
+
+	
+	</div>
+	
+</div>
+
+</body>
+
+</html>

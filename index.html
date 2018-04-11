@@ -1,2 +1,142 @@
-<h1>Index.html from GitHub Repo</h1>
-<h2>This project will eventually be based on jQuery Mobile with a semi-custom theme that I developed with the provided API for doing-so.</h2>
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+    
+    	<link rel="stylesheet" href="admin.zacharyrener.com/nisd/css/dynamic.css" >
+    	
+		<link rel="stylesheet" href="./css/mainCSS.css">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<script src="./jq/jquery-1.11.1.js"></script>
+		<link rel="stylesheet" href="./jq/jquery.mobile-1.4.5.css">
+		<script src="./jq/jquery.mobile-1.4.5.js"></script>
+		
+		<script>
+    		$.support.cors=true;
+		</script>
+  	
+   		
+    </head> <!-- head -->
+    
+    <body class="mainBod" >
+    
+    	
+    
+    <script type="text/javascript">
+			
+			
+			
+			var localStorage = window.localStorage;
+			var storedUser   = localStorage.getItem("1");
+			var storedPass   = localStorage.getItem("2");
+			var boolSaved    = localStorage.getItem("3");
+			
+			$(document).ready(function(){
+				if(storedUser!=null){
+					document.getElementById("lgnUser").value = storedUser;
+					if(boolSaved=="checked"){
+						document.getElementById("lgnPass").value = storedPass;
+						document.getElementById("btnLogin").focus();
+					}else{
+						document.getElementById("lgnPass").focus();
+					}
+					
+				}else{
+					document.getElementById("lgnUser").focus();
+				}
+				if(boolSaved == "checked"){
+					document.getElementById("lgnSave").click();
+				}
+				
+				
+			});
+			
+			
+			function remember(){
+				
+				if(document.getElementById("lgnSave").checked==true){
+					localStorage.setItem("3","checked");
+				}else{
+					localStorage.setItem("3","unchecked");
+				}
+				
+				
+			}
+		
+			function funcSubmit(){
+				
+				var userName = document.getElementById("lgnUser").value;
+				var pass     = document.getElementById("lgnPass").value;
+				if (userName=="" && pass==""){alert("Please enter your login.")}else if(pass==""){ alert("Please enter a password."); }else if(userName==""){alert("Please enter a username.")}
+				else{
+					
+					if(storedUser==userName && storedPass==pass){
+						document.location.href="./mainPage.html";
+					}
+					
+					$.ajax({
+						url: 'http://www.zacharyrener.com/phpSubmit.php?userName='+userName+'&pass='+pass,
+						dataType: "JSON",
+						success: function(data){
+							console.log("index.php ajax success");
+							localStorage.setItem("data",JSON.stringify(data));
+							var contents = JSON.parse(localStorage.getItem("data"));
+							if (contents=="goodPass"){
+								
+									localStorage.setItem("1",userName);
+									localStorage.setItem("2",pass);
+									localStorage.setItem(userName,pass);
+									document.location.href="./mainPage.html";
+								
+								
+
+							} else if(contents=="badPass"){
+								alert("Incorrent password. Please try again.");
+							} else if(contents=="noUser"){
+								alert("User not found. Please try again or request a log-in.");
+							}
+					}
+					});
+		
+					
+				}
+				
+			}
+			
+		</script>
+		
+		<div data-role="page" data-theme="e" id="loginPage">
+		<div data-role="header" style="background-color:#801427;border-bottom: 0px solid #fff;margin-bottom:5%; border-top-color:white;border-top:1px solid white;border-bottom:1px solid white !important;">
+			<div style="text-align:center;"><img  src="./images/nwisd-logo-white.png" style="margin-top:10px; margin: 0 auto;" width="150"/></div>
+		</div> <!-- header -->
+		<div class="container" data-role="content" id="loginPageContent">
+				
+			<form>
+     			<input type="text" id="lgnUser" placeholder="Username" >
+     			
+     			<div style="overflow: hidden;">
+     				<input type="password" name="pass" id="lgnPass" placeholder="Password" >
+				</div>
+				<input data-theme="a" type="checkbox" id="lgnSave" onClick="remember();">
+				<label for="lgnSave">Save password?</label>
+			</form>
+			
+			<button class="loginBtn" id="btnLogin" onClick="funcSubmit();">Log in</button>
+			<button class="loginBtn" onClick="remember();">Need an Account? Sign up here.</button>
+
+		
+		
+		
+		 <div class="imgcontainer2">
+				<b style="color:white;">Need Help?</b> <br>
+			 	<a onclick="javascript:alert('If you need to request the login, contact borth@nisdtx.org.')"><img width="30" src="./images/iconInfo.png" alt="Avatar" class="avatar1"></a>
+		 </div> <!-- help button -->
+		 </div>
+		 <div id="containsBoolen">
+			
+		</div> <!-- phpSubmit.php returns here -->
+		</div>
+    </body>
+</html>
