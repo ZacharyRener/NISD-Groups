@@ -65,148 +65,279 @@ body, html {
 
 <body>
 	
-	<!-- All x_content divIDs are JSONP filled through ./js/injecting.js. -->
-	
+<!-- All x_content divIDs are J SONP filled through ./js/injecting.js. -->
+
+
+
+
+<!--.......................... Side Panel ...............................................................................-->
 	<div  data-role="panel" data-position="left" data-display="push" id="panel-01" class="panel01">
-	<div class="panel_logo"></div>
+
+		<div class="panel_logo"></div>
+
 		<ul data-role="listview"  class="panelListView" data-theme="e">
-		  <li data-icon="home" ><a href="#home">Home</a></li>
-		  <li data-icon="info" ><a href="#about">About</a></li>
+
+			<li data-icon="home" ><a href="#home">Home</a></li>
+
+			<li data-icon="info" ><a href="#about">About</a></li>
+
 		</ul>
-	<div id="panel_image"></div>
-	<ul data-role="listview"  class="panelListView" data-theme="e">
-		<li data-icon="lock" ><a onclick="logOut()">Log Out</a></li>
-	</ul>
+
+		<div id="panel_image"></div>
+
+		<ul data-role="listview"  class="panelListView" data-theme="e">
+			
+			<li data-icon="lock" ><a onclick="logOut()">Log Out</a></li>
+
+		</ul>
 	
-	</div> <!-- side panel -->
+	</div> 
+<!--................................................................................................................... -->
+
+
+
+
+
+<!--.......................... Home Page (for Name Sort) ...............................................................-->
 	<div data-role="page" id="home" data-position="fixed" data-theme="e" style="background-image: ">
-<div class="headerDiv">  </div> <!-- IMPORTANT -->
-	<div data-role="header"  >
+
+		<div class="headerDiv">  </div> <!-- IMPORTANT -->
+
+			<div data-role="header"  >
+				
+				<div class="header_logo"></div>
+				
+				<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
+				
+				<div  data-role="navbar">
+
+					<ul>
+
+						<li><a class="ui-btn-active ui-state-persist" href="#home">Home</a></li>
+
+						<li><a class="nav-inactive" data-transition="none" href="#keyContacts">Key Contacts</a></li>
+
+						<li><a class="nav-inactive" href="#principles">Principals</a></li>
+
+					</ul>
+
+				</div>
+
+			</div>
+		    
+			<div id="homeContent" data-role="content"></div>
+			
+			<div id="homeContent-footer" data-role="footer" data-position="fixed" >
+				
+				<div class="home-about-div">
+
+					<a href="#about"><h2><b>About Groups</b></h2></a><hr><a href="#allContacts"><h2><b>View All Contacts</b></h2></a>
+
+				</div>
+				
+			</div>
+	
+	</div> 
+<!--........................................................................................................................-->
+
+
+
+
+
+<!--.......................... Home Page (for Campus Sort) .................................................................-->
+<div data-role="page" id="homeByCampus" data-position="fixed" data-theme="e" >
+
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+
+	<div data-role="header">
 		
 		<div class="header_logo"></div>
-		
+			
 		<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
-		<!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
-		
-		<div  data-role="navbar">
-			<ul>
-				<li><a class="ui-btn-active ui-state-persist" href="#home">Home</a></li>
-				<li><a class="nav-inactive" data-transition="none" href="#keyContacts">Key Contacts</a></li>
-				<li><a class="nav-inactive" href="#principles">Principals</a></li>
-			</ul>
-		</div>
-	</div>
-    
-	<div id="homeContent" data-role="content"></div>
-	
-	<div id="homeContent-footer" data-role="footer" data-position="fixed" >
-		
-		<div class="home-about-div"><a href="#about"><h2><b>About Groups</b></h2></a><hr><a href="#allContacts"><h2><b>View All Contacts</b></h2></a></div>
-		
-	</div>
-	
-</div> <!-- home screen for name sort -->
-	<div data-role="page" id="homeByCampus" data-position="fixed" data-theme="e" >
-<div class="headerDiv">  </div> <!-- IMPORTANT -->
-	<div data-role="header"  >
-		
-		<div class="header_logo"></div>
-		
-		<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
-		<!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
-		
-		<div  data-role="navbar">
-			<ul>
-				<li><a class="ui-btn-active ui-state-persist" href="#homeByCampus">Home</a></li>
-				<li><a class="nav-inactive" data-transition="none" href="#keyContactsByCampus">Key Contacts</a></li>
-				<li><a class="nav-inactive" href="#principlesByCampus">Principals</a></li>
-			</ul>
-		</div>
+			
+			<div  data-role="navbar">
+
+				<ul>
+
+					<li><a class="ui-btn-active ui-state-persist" href="#homeByCampus">Home</a></li>
+
+					<li><a class="nav-inactive" data-transition="none" href="#keyContactsByCampus">Key Contacts</a></li>
+
+					<li><a class="nav-inactive" href="#principlesByCampus">Principals</a></li>
+
+				</ul>
+
+			</div>
+
 	</div>
     
 	<div id="homeByCampusContent" data-role="content"></div>
+
 	<div id="homeByCampusContent-footer" data-role="footer" data-position="fixed">
 		
-		<div class="home-about-div"><a href="#about"><h2><b>About Groups</b></h2></a><hr><a href="#allContacts"><h2><b>View All Contacts</b></h2></a></div>
+		<div class="home-about-div">
+
+			<a href="#about"><h2><b>About Groups</b></h2></a><hr><a href="#allContacts"><h2><b>View All Contacts</b></h2></a>
+
+		</div>
 		
 	</div>
 	
-</div> <!-- home screen for name sort -->	
+</div>
+<!--..............................................................................................................................-->
+
+
+
+
+
+<!--.......................... Key Contacts (Name Sort)...........................................................................-->
+<div data-role="page" id="keyContacts" data-theme="e">
+
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+
+	<div data-role="header" data-theme="e"  >
+
+		<div class="header_logo"></div>
+
+		<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
+
+		<div  data-role="navbar">
+
+			<ul>
+
+				<li><a class="nav-inactive" href="#home">Home</a></li>
+
+				<li><a class="ui-btn-active ui-state-persist" href="#keyContacts">Key Contacts</a></li>
+
+				<li><a class="nav-inactive" href="#principles">Principals</a></li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+	<div data-role="content" id="keyContacts_content" class="ui-grid-b"></div>
+
+</div> 
+<!--...........................................................................................................................-->
+
+
+
+
+
+<!--.......................... Key Contacts (Campus Sort) ....................................................................-->
+<div data-role="page" id="keyContactsByCampus" data-theme="e">
+
+	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+
+	<div data-role="header" data-theme="e" > 
+
+   		<div class="header_logo"></div> 
+
+   		<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
+
+	    <div  data-role="navbar">
+
+	      <ul>
+
+	        <li><a  class="nav-inactive" href="#homeByCampus">Home</a></li>
+
+	        <li><a class="ui-btn-active ui-state-persist" href="#keyContactsByCampus">Key Contacts</a></li>
+
+	        <li><a class="nav-inactive" href="#principlesByCampus">Principals</a></li>
+
+	      </ul>
+
+	    </div>
+  	</div>
+  	<div data-role="content" id="keyContactsByCampus_content" class="ui-grid-b"></div>
+
+</div> <!-- key contacts by campus -->
+<!--.................................................................................................................................-->
+
+
+
 
 	
-	<!-- Key Contacts for name sort and campus sort -->
-	<div data-role="page" id="keyContacts" data-theme="e">
-	<div class="headerDiv">  </div> <!-- IMPORTANT -->
-		<div data-role="header" data-theme="e"  >
-			<div class="header_logo"></div>
-			<a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
-			<div  data-role="navbar">
-				<ul>
-					<li><a class="nav-inactive" href="#home">Home</a></li>
-					<li><a class="ui-btn-active ui-state-persist" href="#keyContacts">Key Contacts</a></li>
-					<li><a class="nav-inactive" href="#principles">Principals</a></li>
-				</ul>
-			</div>
-		</div>
-		<div data-role="content" id="keyContacts_content" class="ui-grid-b"></div>
-	</div> <!-- key contacts by name -->
-	<div data-role="page" id="keyContactsByCampus" data-theme="e">
-	<div class="headerDiv">  </div> <!-- IMPORTANT -->
-		<div data-role="header" data-theme="e" > 
-   		<div class="header_logo"></div> <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" data-iconpos="notext">Grid</a>
-    <div  data-role="navbar">
-      <ul>
-        <li><a  class="nav-inactive" href="#homeByCampus">Home</a></li>
-        <li><a class="ui-btn-active ui-state-persist" href="#keyContactsByCampus">Key Contacts</a></li>
-        <li><a class="nav-inactive" href="#principlesByCampus">Principals</a></li>
-      </ul>
-    </div>
-  </div>
-  		<div data-role="content" id="keyContactsByCampus_content" class="ui-grid-b"></div>
-	</div> <!-- key contacts by campus -->
-	
-	<!-- Principals navigation menues for name sort and campus sort. -->
-	<div id="principles" data-role="page" data-theme="e">
-	<div class="headerDiv">  </div> <!-- IMPORTANT -->
+<!--.......................... Principals Landing Page (Name Sort)...........................................................................-->
+<div id="principles" data-role="page" data-theme="e">
+
+	<div class="headerDiv"> </div>
+
 	<div data-role="header" data-theme="e">
+
 		<div class="header_logo"></div>
         
-           <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
+        <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
            data-iconpos="notext">Grid</a>
-           <!--<a href="javascript: history.go(-1)" class="ui-btn-right" data-icon="arrow-l" data-direction="reverse" data-iconpos="notext">Grid</a>-->
-           <div  data-role="navbar">
+
+        <div  data-role="navbar">
+
 			<ul>
+
 				<li><a class="nav-inactive" href="#home">Home</a></li>
+
 				<li><a class="nav-inactive" href="#keyContacts">Key Contacts</a></li>
+
 				<li><a class="ui-btn-active ui-state-persist" href="#principles">Principals</a></li>
+
 			</ul>
+
 		</div>
+
 	</div>
+
 	<div data-role="content">
 		
 		<div id="sortingMenu">
-		<div id="sortByText"><b>Sort by</b></div><br>
-		<div  data-role="navbar">
-			<ul>
-				<li><a class="ui-btn-active ui-state-persist">Name</a></li>
-				<li><a class="nav-inactive border-right" href="#principlesByCampus">Campus</a></li>
-			</ul>
+
+			<div id="sortByText"><b>Sort by</b></div>
+
+			<br>
+
+			<div  data-role="navbar">
+
+				<ul>
+
+					<li><a class="ui-btn-active ui-state-persist">Name</a></li>
+
+					<li><a class="nav-inactive border-right" href="#principlesByCampus">Campus</a></li>
+
+				</ul>
+
+			</div>
+
 		</div>
-		</div>
+
 		<br><br>
+
 		<ul class="principalNav" data-role="listview" data-theme="e">
+
 			<li><a data-transition="slide" href="#elemPrinciples">Elementary School</a></li>
+
             <li><a data-transition="slide" href="#midPrinciples">Middle School</a></li>
+
             <li><a data-transition="slide" href="#highPrinciples">High School</a></li>
+
             <li><a data-transition="slide" href="#allPrinciples">Other/All</a></li>
 			
 		</ul>
-		<br><br>
-		
+
+		<br>
+
+		<br>
 		
 	</div>
 	
-</div> <!-- principals nav screen -->
+</div>
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--.......................... Principals Landing Page (Campus Sort)...........................................................................-->
 	<div id="principlesByCampus" data-role="page" data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 	<div data-role="header" data-theme="e">
@@ -248,8 +379,13 @@ body, html {
 	</div>
 	
 </div> <!-- principals nav screen -->
+<!--.................................................................................................................................-->
+
+
+
+
 	
-	<!-- All/other principals pages for name sort and campus sort. -->
+<!--.......................... All Principals (Name Sort)...........................................................................-->
 	<div data-role="page" id="allPrinciples" data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e">
@@ -277,6 +413,13 @@ body, html {
       </div>
     </div>
 	</div> <!-- all principals by name -->
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--..........................All Principals (Campus Sort)...........................................................................-->
 	<div data-role="page" id="allPrinciplesByCampus" data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e"> <div class="header_logo"></div> <a href="#panel-01" class="ui-btn-left ui-nodisc-icon transparentButton" data-icon="whitebullets" data-direction="reverse" 
@@ -301,8 +444,13 @@ body, html {
       </div>
     </div>
 	</div> <!-- all principals by campus -->
+<!--.................................................................................................................................-->
+
+
+
+
 	
-	<!-- Elementary principals pages for name sort and campus sort. -->
+<!--.......................... Elementary Principals (Name Sort)...........................................................................-->
 	<div data-role="page" id="elemPrinciples"data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e">
@@ -332,6 +480,13 @@ body, html {
 		
 	</div>
 	</div> <!-- elementary principals by name -->
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--.......................... Elementary Principals (Campus Sort)...........................................................................-->
 	<div data-role="page" id="elemPrinciplesByCampus"data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e">
@@ -361,8 +516,13 @@ body, html {
 		
 	</div>
 	</div> <!-- elementary principals by campus -->
-	
-	<!-- Middle principals pages for name sort and campus sort. -->
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--.......................... Middle School Principals (Name Sort)...........................................................................-->
 	<div data-role="page" id="midPrinciples"data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e">
@@ -391,6 +551,13 @@ body, html {
 		
 	</div>
 	</div> <!-- middle principals by name -->
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--.......................... Middle School Principals (Campus Sort)...........................................................................-->
 	<div data-role="page" id="midPrinciplesByCampus"data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e">
@@ -419,8 +586,13 @@ body, html {
 		
 	</div>
 	</div> <!-- middle principals by campus -->
-	
-	<!-- High principals pages for name sort and campus sort. -->
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--.......................... High School Principals (Name Sort)...........................................................................-->
 	<div data-role="page" id="highPrinciples"data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e">
@@ -449,6 +621,13 @@ body, html {
 		
 	</div>
 	</div> <!-- high principals by name -->
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--.......................... High School Principals (Campus Sort)...........................................................................-->
 	<div data-role="page" id="highPrinciplesByCampus"data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e">
@@ -477,8 +656,13 @@ body, html {
 		
 	</div>
 	</div> <!-- high principals by campus -->
-	
-	<!-- All contacts page for name sort only. -->
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--.......................... All Contacts (Name Sort Only)...........................................................................-->	
 	<div data-role="page" id="allContacts" data-theme="e" >
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 		<div data-role="header" data-theme="e">
@@ -501,8 +685,13 @@ body, html {
 		
 	</div>
 	</div>
-	
-	<!-- About page. -->
+<!--.................................................................................................................................-->
+
+
+
+
+
+<!--.......................... About Page (Static)..................................................................................-->
 	<div data-role="page" id="about" data-position="fixed" data-theme="e">
 	<div class="headerDiv">  </div> <!-- IMPORTANT -->
 	<div data-role="header" data-theme="e">
@@ -523,6 +712,11 @@ body, html {
 	</div>
 	
 </div>
+<!--.................................................................................................................................-->
+
+
+
+
 
 </body>
 
