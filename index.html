@@ -1,265 +1,271 @@
 <!DOCTYPE HTML>
 
 <html>
+
     <head>
     
-    	<!-- 
-    	This file is an example of php css files I have on the server. I commented it out because it messes with current CSS changes. 
-    	<link rel="stylesheet" href="http://admin.zacharyrener.com/css/dynamic.php" >
-    	-->
+    	
+    	<!-- This file is an example of php css files I have on the server. I commented it out because it messes with current CSS changes. 
+    	<link rel="stylesheet" href="http://admin.zacharyrener.com/css/dynamic.php" > -->
+    	
 		<link rel="stylesheet" href="./css/mainCSS.css">
+
 		<meta charset="utf-8" />
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<script src="./jq/jquery-1.11.1.js"></script>
+
 		<link rel="stylesheet" href="./jq/jquery.mobile-1.4.5.css">
+
 		<script src="./jq/jquery.mobile-1.4.5.js"></script>
 		
 		<script>
+
     		$.support.cors=true;
+
 		</script>
-  	
    		
     </head>
     
     <body class="mainBod" >
     
     	
-    <!--
-	All of this javascript is being ran right underneath the body...TODO move this into an external file? 
-    -->
-    <script type="text/javascript">
-			
-			
-			//Basic caching setup
-			var localStorage = window.localStorage;
+    
+	<!-- All of this javascript is being ran right underneath the body...TODO move this into an external file?  -->
 
-			//If this item is already populated, the user has logged in before.
-			var storedUser   = localStorage.getItem("1");
-			
-			//Commenting out cached password cleared in plaintext. We will only save the username locally.
-			//var storedPass   = localStorage.getItem("2");
+	    <script type="text/javascript">
+				
+				
+				//Basic caching setup
+				var localStorage = window.localStorage;
 
-			//This variable keeps in memory whether or not the user opted-in to save their password....we may remove this.
-			var boolSaved    = localStorage.getItem("3");
-			
-			$(document).ready(function(){
+				//If this item is already populated, the user has logged in before.
+				var storedUser   = localStorage.getItem("1");
+				
+				//Commenting out cached password cleared in plaintext. We will only save the username locally.
+				//var storedPass   = localStorage.getItem("2");
 
-				//If there isn't already stored data for a username
-				if(storedUser!=null){
+				//This variable keeps in memory whether or not the user opted-in to save their password....we may remove this.
+				var boolSaved    = localStorage.getItem("3");
+				
+				$(document).ready(function(){
 
-					//Then set the value of the username input to the "storedUser" variable
-					document.getElementById("lgnUser").value = storedUser;
+					//If there isn't already stored data for a username
+					if(storedUser!=null){
 
-					//If the user opted into saving their password,
-					if(boolSaved=="checked"){
+						//Then set the value of the username input to the "storedUser" variable
+						document.getElementById("lgnUser").value = storedUser;
 
-						//Then set the value of the password input to the "storedPass" variable
-						document.getElementById("lgnPass").value = storedPass;
+						//If the user opted into saving their password,
+						if(boolSaved=="checked"){
 
-						//User name and password are entered, make the login button have a focused effect
-						document.getElementById("btnLogin").focus();
+							//Then set the value of the password input to the "storedPass" variable
+							document.getElementById("lgnPass").value = storedPass;
 
-					//If the user didn't opt into saving their password,
+							//User name and password are entered, make the login button have a focused effect
+							document.getElementById("btnLogin").focus();
+
+						//If the user didn't opt into saving their password,
+						}else{
+
+							//Then set the window focus on the input to type in their password
+							document.getElementById("lgnPass").focus();
+
+						}
+
+					//If there is no username on storage,
 					}else{
 
-						//Then set the window focus on the input to type in their password
-						document.getElementById("lgnPass").focus();
+						//Then focus on the login input
+						document.getElementById("lgnUser").focus();
 
 					}
 
-				//If there is no username on storage,
-				}else{
+					//If it's on storage that the checkbox was clicked before,
+					if(boolSaved == "checked"){
 
-					//Then focus on the login input
-					document.getElementById("lgnUser").focus();
+						//Then automatically check the box for the user.
+						document.getElementById("lgnSave").click();
 
-				}
-
-				//If it's on storage that the checkbox was clicked before,
-				if(boolSaved == "checked"){
-
-					//Then automatically check the box for the user.
-					document.getElementById("lgnSave").click();
-
-				}
-				
-				
-			});
-			
-			//Function Name: Remember
-			//Purpose:
-			//			This function call saves the status of the "Save password?" checkbox on the login screen
-
-			function remember(){
-				
-				//if the checkbox to save password is checked,
-				if(document.getElementById("lgnSave").checked==true){
-
-					//then set localStorage item "3" to "checked". This can be accessed later to act as presaved settings.
-					localStorage.setItem("3","checked");
-
-				//If the checkbox to save password is NOT checked, 
-				}else{
-
-					//then set localStorage item "3" to "unchecked". This can be accessed later to act as presaved settings.
-					localStorage.setItem("3","unchecked");
-
-				}
-				
-				
-			}
-			
-
-			//Function name: funcSubmit()
-			//Purpose:
-			//		To be called when the user presses the "Log In" Button
-			//TODO:
-			//		Find a better way for notifications than alert()? Something phonegap
-
-			function funcSubmit(){
-				
-				//pulls the data from the username input and stores it into "userName" variable
-				var userName = document.getElementById("lgnUser").value;
-
-				//pulls the data from the password input and stores it into "pass" variable
-				var pass     = document.getElementById("lgnPass").value;
-
-				//if the username and password weren't entered,
-				if (userName=="" && pass==""){
-
-					//send appropriate response
-					alert("Please enter your login.");
-
-				//if only the password wasn't entered,
-				}else if(pass==""){ 
-
-					//send appropriate response
-					alert("Please enter a password."); 
-
-				//if only the username wasn't entered,
-				}else if(userName==""){
-
-					//send appropriate response
-					alert("Please enter a username.");
-
-				}
-
-				//if it's gotten to this point, the username and password are both entered.
-				else{
+					}
 					
 					
-					//time to send the entered login to the database and compare answers
-					$.ajax({
+				});
+				
+				//Function Name: Remember
+				//Purpose:
+				//			This function call saves the status of the "Save password?" checkbox on the login screen
 
-						//this url takes two variables, and returns either "goodPass", "badPass", or "noUser"
-						url: 'http://www.zacharyrener.com/phpSubmit.php?userName='+userName+'&pass='+pass,
+				function remember(){
+					
+					//if the checkbox to save password is checked,
+					if(document.getElementById("lgnSave").checked==true){
 
-						//tells the ajax call to read JSON
-						dataType: "JSON",
+						//then set localStorage item "3" to "checked". This can be accessed later to act as presaved settings.
+						localStorage.setItem("3","checked");
 
-						//if the call is successful, meaning that there was a response from the server of any sort,
-						success: function(data){
+					//If the checkbox to save password is NOT checked, 
+					}else{
 
-							//store the response in storage.
-							localStorage.setItem("data",JSON.stringify(data));
+						//then set localStorage item "3" to "unchecked". This can be accessed later to act as presaved settings.
+						localStorage.setItem("3","unchecked");
 
-							//set the stored response as variable "contents"
-							var contents = JSON.parse(localStorage.getItem("data"));
+					}
+					
+					
+				}
+				
 
-							//if "goodPass" is returned, the login is successful.
-							if (contents=="goodPass"){
+				//Function name: funcSubmit()
+				//Purpose:
+				//		To be called when the user presses the "Log In" Button
+				//TODO:
+				//		Find a better way for notifications than alert()? Something phonegap
+
+				function funcSubmit(){
+					
+					//pulls the data from the username input and stores it into "userName" variable
+					var userName = document.getElementById("lgnUser").value;
+
+					//pulls the data from the password input and stores it into "pass" variable
+					var pass     = document.getElementById("lgnPass").value;
+
+					//if the username and password weren't entered,
+					if (userName=="" && pass==""){
+
+						//send appropriate response
+						alert("Please enter your login.");
+
+					//if only the password wasn't entered,
+					}else if(pass==""){ 
+
+						//send appropriate response
+						alert("Please enter a password."); 
+
+					//if only the username wasn't entered,
+					}else if(userName==""){
+
+						//send appropriate response
+						alert("Please enter a username.");
+
+					}
+
+					//if it's gotten to this point, the username and password are both entered.
+					else{
+						
+						
+						//time to send the entered login to the database and compare answers
+						$.ajax({
+
+							//this url takes two variables, and returns either "goodPass", "badPass", or "noUser"
+							url: 'http://www.zacharyrener.com/phpSubmit.php?userName='+userName+'&pass='+pass,
+
+							//tells the ajax call to read JSON
+							dataType: "JSON",
+
+							//if the call is successful, meaning that there was a response from the server of any sort,
+							success: function(data){
+
+								//store the response in storage.
+								localStorage.setItem("data",JSON.stringify(data));
+
+								//set the stored response as variable "contents"
+								var contents = JSON.parse(localStorage.getItem("data"));
+
+								//if "goodPass" is returned, the login is successful.
+								if (contents=="goodPass"){
+										
+										//set the username in local storage,
+										localStorage.setItem("1",userName);
+
+										//Commented this out...we don't want to save the password anymore. this sets the password in local storage
+										//localStorage.setItem("2",pass);
+
+										//Commented this out...this also stores the password in local memory.
+										//localStorage.setItem(userName,pass);
+
+										//login success, redirect to homepage. TODO change how this login works. REF 152
+										document.location.href="./mainPage.html";
 									
-									//set the username in local storage,
-									localStorage.setItem("1",userName);
+								//if "badPass" is returned, the login has failed.
+								} else if(contents=="badPass"){
 
-									//Commented this out...we don't want to save the password anymore. this sets the password in local storage
-									//localStorage.setItem("2",pass);
+									//send the appropriate response
+									alert("Incorrent password. Please try again.");
 
-									//Commented this out...this also stores the password in local memory.
-									//localStorage.setItem(userName,pass);
+								//if "noUser" is returned, the user entered an incorrect username.	
+								} else if(contents=="noUser"){
 
-									//login success, redirect to homepage. TODO change how this login works. REF 152
-									document.location.href="./mainPage.html";
-								
-							//if "badPass" is returned, the login has failed.
-							} else if(contents=="badPass"){
-
-								//send the appropriate response
-								alert("Incorrent password. Please try again.");
-
-							//if "noUser" is returned, the user entered an incorrect username.	
-							} else if(contents=="noUser"){
-
-								//send the appropriate response
-								alert("User not found. Please try again or request a log-in.");
-					
-							}
+									//send the appropriate response
+									alert("User not found. Please try again or request a log-in.");
+						
+								}
 
 
-					}//end of success:function(data){}
+						}//end of success:function(data){}
 
-					}); //end of ajax call
-		
+						}); //end of ajax call
+			
+						
+					}
 					
 				}
 				
-			}
-			
-		</script>
+			</script>
 
-		<!-- HTML for the actuall login page front-end -->
+			<!-- HTML for the actuall login page front-end -->
 
 
-		<div data-role="page" data-theme="e" id="loginPage">
+			<div data-role="page" data-theme="e" id="loginPage">
 
-			<div data-role="header" style="background-color:#801427;border-bottom: 0px solid #fff;margin-bottom:5%; border-top-color:white; order-top:1px solid white;border-bottom:1px solid white !important;">
+				<div data-role="header" style="background-color:#801427;border-bottom: 0px solid #fff;margin-bottom:5%; border-top-color:white; order-top:1px solid white;border-bottom:1px solid white !important;">
 
-				<div style="text-align:center;">
+					<div style="text-align:center;">
 
-					<img  src="./images/nwisd-logo-white.png" style="margin-top:10px; margin: 0 auto;" width="150"/>
+						<img  src="./images/nwisd-logo-white.png" style="margin-top:10px; margin: 0 auto;" width="150"/>
 
-				</div>
-
-			</div> <!-- header -->
-
-
-			<div class="container" data-role="content" id="loginPageContent">
-				
-				<form>
-
-     				<input type="text" id="lgnUser" placeholder="Username" >
-     			
-     				<div style="overflow: hidden;">
-     					<input type="password" name="pass" id="lgnPass" placeholder="Password" >
 					</div>
 
-					<input data-theme="a" type="checkbox" id="lgnSave" onClick="remember();">
+				</div> <!-- header -->
 
-					<label for="lgnSave">Save password?</label>
 
-				</form>
+				<div class="container" data-role="content" id="loginPageContent">
+					
+					<form>
+
+	     				<input type="text" id="lgnUser" placeholder="Username" >
+	     			
+	     				<div style="overflow: hidden;">
+	     					<input type="password" name="pass" id="lgnPass" placeholder="Password" >
+						</div>
+
+						<input data-theme="a" type="checkbox" id="lgnSave" onClick="remember();">
+
+						<label for="lgnSave">Save password?</label>
+
+					</form>
+				
+					<button class="loginBtn" id="btnLogin" onClick="funcSubmit();">Log in</button>
+
+					<button class="loginBtn" onClick="remember();">Need an Account? Sign up here.</button>
+
 			
-				<button class="loginBtn" id="btnLogin" onClick="funcSubmit();">Log in</button>
+					<div class="imgcontainer2">
 
-				<button class="loginBtn" onClick="remember();">Need an Account? Sign up here.</button>
+						<b style="color:white;">Need Help?</b> <br>
 
-		
-				<div class="imgcontainer2">
+				 		<a onclick="javascript:alert('If you need to request the login, contact borth@nisdtx.org.')"><img width="30" src="./images/iconInfo.png" alt="Avatar" class="avatar1"></a>
 
-					<b style="color:white;">Need Help?</b> <br>
+					</div> <!-- help button -->
 
-			 		<a onclick="javascript:alert('If you need to request the login, contact borth@nisdtx.org.')"><img width="30" src="./images/iconInfo.png" alt="Avatar" class="avatar1"></a>
+				</div> <!-- container -->
 
-				</div> <!-- help button -->
+				<div id="containsBoolen">
+				
+				</div> <!-- phpSubmit.php returns here -->
 
-			</div> <!-- container -->
-
-			<div id="containsBoolen">
-			
-			</div> <!-- phpSubmit.php returns here -->
-
-		</div>
+			</div>
 
     </body>
 
