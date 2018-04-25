@@ -1,10 +1,22 @@
+
 NISDGroups Repo
-Zachary Rener
-04/10/18
+Author: Zachary Rener
+Project Start Date: 04/10/18
 
 
-This repo is the public construction of NISD Groups, a project I started in late 2016. 
+General
 
-It is a PhoneGap mobile application used for managing databases of phone and other contact records of administrators in the Northwest Independent School District in Justin, TX.
+	Storage system for organization based phone numbers. Sortable by roles, customizable through custom built CMS. 
 
-This project will eventually be based on jQuery Mobile with a semi-custom theme that I developed with the provided API for doing-so.
+	Phonegap built app. jQuery Mobile based.
+
+
+
+Technical
+
+	mainPage.html
+
+		All x_content divIDs are J SONP filled through ./js/injecting.js. Pulls from a PHP file on server, fetches response with json/ajax call.
+
+		Divs structured as "<div class="headerDiv">  </div> " are similarly JS filled.
+
